@@ -44,48 +44,86 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier){
+fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
-        modifier  = modifier
+        modifier = modifier
     )
 }
 
 
-
 @Composable
-fun ConstraintExample(){
+fun ConstraintExample() {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-        val (boxRed, boxBlue, boxYellow, boxMagenta) = createRefs()
+        val (boxNigger, boxBlue, boxBlue2, boxBlue3, boxBlue4, boxMagenta, boxMagenta2, boxMagenta3, boxMagenta4) = createRefs()
+        val gay = createGuidelineFromTop(1/3f)
+        val gay2 = createGuidelineFromStart(40.dp)
+        val barrier = createEndBarrier(boxNigger, boxBlue3)
+
         Box(modifier = Modifier
-            .size(125.dp)
-            .background(Color.Red)
-            .constrainAs(boxRed) {
-                top.linkTo(parent.top)
-                start.linkTo(parent.start)
+            .size(50.dp)
+            .background(Color.Black)
+            .constrainAs(boxNigger) {
+                top.linkTo(gay)
+                start.linkTo(gay2)
                 end.linkTo(parent.end)
                 bottom.linkTo(parent.bottom)
             })
         Box(modifier = Modifier
-            .size(125.dp)
-            .background(Color.Blue)
+            .size(50.dp)
+            .background(Color.Cyan)
             .constrainAs(boxBlue) {
-                bottom.linkTo(boxRed.top)
-                end.linkTo(boxRed.start)
+                bottom.linkTo(boxNigger.top)
+                end.linkTo(boxNigger.start)
             })
         Box(modifier = Modifier
-            .size(125.dp)
-            .background(Color.Yellow)
-            .constrainAs(boxYellow) {
-                top.linkTo(boxRed.bottom)
-                start.linkTo(boxRed.end)
+            .size(50.dp)
+            .background(Color.Cyan)
+            .constrainAs(boxBlue2) {
+                bottom.linkTo(boxNigger.top)
+                start.linkTo(boxNigger.end)
             })
         Box(modifier = Modifier
-            .size(125.dp)
+            .size(50.dp)
+            .background(Color.Cyan)
+            .constrainAs(boxBlue3) {
+                top.linkTo(boxNigger.bottom)
+                end.linkTo(boxNigger.start)
+            })
+        Box(modifier = Modifier
+            .size(50.dp)
+            .background(Color.Cyan)
+            .constrainAs(boxBlue4) {
+                top.linkTo(boxNigger.bottom)
+                start.linkTo(boxNigger.end)
+            })
+        Box(modifier = Modifier
+            .size(50.dp)
             .background(Color.Magenta)
             .constrainAs(boxMagenta) {
-                top.linkTo(boxYellow.bottom)
-                end.linkTo(boxYellow.start)
+                bottom.linkTo(boxBlue.top)
+                start.linkTo(boxBlue.end)
+            })
+        Box(modifier = Modifier
+            .size(50.dp)
+            .background(Color.Magenta)
+            .constrainAs(boxMagenta2) {
+                top.linkTo(boxBlue4.bottom)
+                end.linkTo(boxBlue4.start)
+            })
+        Box(modifier = Modifier
+            .size(50.dp)
+            .background(Color.Magenta)
+            .constrainAs(boxMagenta3) {
+                top.linkTo(boxBlue3.bottom)
+                end.linkTo(boxBlue3.start)
+            })
+        Box(modifier = Modifier
+            .size(50.dp)
+            .background(Color.Magenta)
+            .constrainAs(boxMagenta4) {
+                top.linkTo(boxBlue4.bottom)
+                start.linkTo(boxBlue4.end)
             })
     }
 }
@@ -98,32 +136,48 @@ fun firstApp() {
             .background(Color.White)
             .padding(7.dp),
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Text("Título",
-            fontSize = 24.sp, color = Color.Gray)
-        Text(text = "Subtítulo",
-            fontSize = 18.sp, color = Color.Gray)
-        Row (
+    ) {
+        Text(
+            "Título",
+            fontSize = 24.sp, color = Color.Gray
+        )
+        Text(
+            text = "Subtítulo",
+            fontSize = 18.sp, color = Color.Gray
+        )
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
-        ){
-            Text("opción 1",
-                fontSize = 18.sp, color = Color.Gray)
-            Text("opción 2",
-                fontSize = 18.sp, color = Color.Gray)
-            Text("opción 3",
-                fontSize = 18.sp, color = Color.Gray)
+        ) {
+            Text(
+                "opción 1",
+                fontSize = 18.sp, color = Color.Gray
+            )
+            Text(
+                "opción 2",
+                fontSize = 18.sp, color = Color.Gray
+            )
+            Text(
+                "opción 3",
+                fontSize = 18.sp, color = Color.Gray
+            )
         }
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
-        ){
-            Text("Texto 1",
-                fontSize = 18.sp, color = Color.Gray)
-            Text("Texto 2",
-                fontSize = 18.sp, color = Color.Gray)
-            Text("Texto 3",
-                fontSize = 18.sp, color = Color.Gray)
+        ) {
+            Text(
+                "Texto 1",
+                fontSize = 18.sp, color = Color.Gray
+            )
+            Text(
+                "Texto 2",
+                fontSize = 18.sp, color = Color.Gray
+            )
+            Text(
+                "Texto 3",
+                fontSize = 18.sp, color = Color.Gray
+            )
 
         }
     }
@@ -131,13 +185,13 @@ fun firstApp() {
 
 
 @Composable
-fun MyFisrtAppPreview(){
+fun MyFisrtAppPreview() {
     firstApp()
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview(){
+fun GreetingPreview() {
     PrimeraAppComposeTheme {
         ConstraintExample()
     }
